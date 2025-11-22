@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toyota Forklift Year-End Function 2025</title>
+    <title>Year-End Function 2025 | Toyota Forklift</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -60,6 +60,23 @@
                 opacity: 0;
                 transform: translateX(100px) rotate(360deg);
             }
+        }
+
+        .ornament-float {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            animation: float-ornament 8s ease-in-out infinite;
+            opacity: 0.7;
+            box-shadow: 0 0 15px currentColor;
+        }
+
+        @keyframes float-ornament {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-30px) translateX(20px); }
+            50% { transform: translateY(0) translateX(40px); }
+            75% { transform: translateY(-30px) translateX(20px); }
         }
 
         .container {
@@ -303,128 +320,117 @@
             50% { transform: scale(1.2); }
         }
 
-        /* YouTube Player Section */
-        .youtube-section {
+        .weather-forecast {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(15px);
             border-radius: 25px;
-            padding: 40px 30px;
-            margin: 40px 0;
+            padding: 30px 25px;
+            margin-bottom: 30px;
             border: 2px solid rgba(255, 215, 0, 0.4);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
-        .youtube-title {
+        .weather-title {
             font-size: clamp(1.6rem, 4vw, 2.2rem);
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-weight: 800;
             color: var(--primary-red);
         }
 
-        .youtube-container {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .youtube-iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Mini Player */
-        .mini-player {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            height: 170px;
-            background: rgba(0, 0, 0, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            overflow: hidden;
-            transform: translateY(150%);
-            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            border: 2px solid var(--accent-gold);
-        }
-
-        .mini-player.active {
-            transform: translateY(0);
-        }
-
-        .mini-player-header {
+        .weather-content {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 8px 12px;
-            background: rgba(235, 10, 30, 0.9);
-            color: white;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .weather-icon-large {
+            font-size: 5rem;
+            animation: bounce-weather 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce-weather {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .weather-info {
+            text-align: center;
+        }
+
+        .weather-temp {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin: 10px 0;
+        }
+
+        .weather-desc {
+            font-size: 1.3rem;
+            color: var(--text-dark);
             font-weight: 600;
         }
 
-        .mini-player-controls {
+        .countdown-section {
+            margin: 35px 0;
+        }
+
+        .countdown-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 25px;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .countdown-container {
             display: flex;
-            gap: 10px;
-        }
-
-        .mini-player-btn {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-        }
-
-        .mini-player-btn:hover {
-            color: var(--accent-gold);
-        }
-
-        .mini-player-iframe {
-            width: 100%;
-            height: calc(100% - 40px);
-            border: none;
-        }
-
-        .mini-player-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 999;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 14px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(255, 215, 0, 0.6);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
-            border: 2px solid white;
+            cursor: pointer;
+            flex: 1;
+            min-width: 90px;
+            max-width: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
         }
 
-        .mini-player-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        .countdown-item:hover {
+            transform: translateY(-10px) scale(1.08);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.5);
         }
 
-        .mini-player-toggle.hidden {
-            opacity: 0;
-            pointer-events: none;
+        .countdown-value {
+            font-size: clamp(1.6rem, 5.2vw, 2.6rem);
+            font-weight: 900;
+            color: var(--primary-red);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dark);
+            white-space: normal;
+            line-height: 1.1;
         }
 
         .highlights-section {
@@ -582,6 +588,148 @@
             }
         }
 
+        .amapiano-section {
+            background: linear-gradient(135deg, rgba(235, 10, 30, 0.15), rgba(255, 215, 0, 0.15));
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .amapiano-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(235, 10, 30, 0.3);
+        }
+
+        .amapiano-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--primary-red);
+        }
+
+        .amapiano-player {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .amapiano-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .amapiano-cover {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #ffd700, #ff9e00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .amapiano-details {
+            text-align: left;
+        }
+
+        .amapiano-song {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .amapiano-artist {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .amapiano-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .amapiano-btn {
+            background: linear-gradient(135deg, #ffd700, #ff9e00);
+            border: none;
+            color: var(--text-dark);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            font-size: 1.2rem;
+        }
+
+        .amapiano-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .amapiano-btn.play-pause {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+        }
+
+        .amapiano-progress {
+            width: 100%;
+            max-width: 300px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .amapiano-progress-bar {
+            height: 100%;
+            background: linear-gradient(135deg, #ffd700, #ff9e00);
+            width: 0%;
+            border-radius: 3px;
+            transition: width 0.1s linear;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .volume-slider {
+            width: 100px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #ffd700;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
         .cta-section {
             text-align: center;
             margin-top: 50px;
@@ -629,16 +777,8 @@
                 flex-direction: column;
             }
             
-            .mini-player {
-                width: 250px;
-                height: 140px;
-                right: 10px;
-                bottom: 10px;
-            }
-            
-            .mini-player-toggle {
-                right: 10px;
-                bottom: 10px;
+            .weather-content {
+                flex-direction: column;
             }
             
             .tip-ornament {
@@ -652,6 +792,13 @@
                 max-width: 110px;
                 padding: 16px 10px;
             }
+
+            .amapiano-info {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+                border-radius: 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -660,11 +807,6 @@
                 height: 220px;
                 padding: 25px 30px;
                 font-size: 0.95rem;
-            }
-            
-            .mini-player {
-                width: 200px;
-                height: 113px;
             }
         }
     </style>
@@ -718,26 +860,74 @@
                 <div><i class="fas fa-clock"></i>11:30 AM - 3:00 PM</div>
                 <div><i class="fas fa-map-marker-alt"></i>Valakazi Street</div>
             </div>
-        </div>
-
-        <!-- YouTube Player Section -->
-        <div class="youtube-section">
-            <div class="youtube-title">🎵 Amapiano Vibes 🎵</div>
-            <div class="youtube-container">
-                <iframe 
-                    class="youtube-iframe" 
-                    id="main-youtube-player"
-                    src="https://www.youtube.com/embed/VIDEO_ID?enablejsapi=1&controls=1&rel=0&modestbranding=1" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+            
+            <div class="countdown-section">
+                <div class="countdown-title">⏳ Countdown to Celebration ⏳</div>
+                <div class="countdown-container">
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="days">00</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="hours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="minutes">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="seconds">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
             </div>
-            <p style="text-align: center; margin-top: 15px; font-weight: 600; color: #555;">
-                Scroll down to continue browsing while the music plays in the mini player!
-            </p>
         </div>
 
+        <div class="weather-forecast">
+            <div class="weather-title">🌤️ Event Day Weather Forecast 🌤️</div>
+            <div class="weather-content">
+                <div class="weather-icon-large">☀️</div>
+                <div class="weather-info">
+                    <h3>Valakazi Street, Johannesburg</h3>
+                    <div class="weather-temp">28°C</div>
+                    <div class="weather-desc">Sunny & Perfect for Celebration!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Amapiano Player Section -->
+        <div class="amapiano-section">
+            <div class="amapiano-title">🎵 Amapiano Vibes 🎵</div>
+            <div class="amapiano-player">
+                <div class="amapiano-info">
+                    <div class="amapiano-cover">🎶</div>
+                    <div class="amapiano-details">
+                        <div class="amapiano-song" id="current-song">Sengizwile</div>
+                        <div class="amapiano-artist" id="current-artist">Kabza De Small & DJ Maphorisa</div>
+                    </div>
+                </div>
+                <div class="amapiano-controls">
+                    <button class="amapiano-btn" onclick="changeTrack(-1)">
+                        <i class="fas fa-backward"></i>
+                    </button>
+                    <button class="amapiano-btn play-pause" onclick="toggleAmapiano()">
+                        <i class="fas fa-play" id="amapiano-play-icon"></i>
+                    </button>
+                    <button class="amapiano-btn" onclick="changeTrack(1)">
+                        <i class="fas fa-forward"></i>
+                    </button>
+                </div>
+                <div class="amapiano-progress">
+                    <div class="amapiano-progress-bar" id="amapiano-progress"></div>
+                </div>
+                <div class="volume-control">
+                    <i class="fas fa-volume-up"></i>
+                    <input type="range" min="0" max="100" value="70" class="volume-slider" id="volume-slider">
+                </div>
+            </div>
+        </div>
+        
         <div class="highlights-section">
             <div class="highlights-title">🎉 What to Expect 🎉</div>
             <div class="highlights-grid">
@@ -778,6 +968,7 @@
         <div class="cta-section">
             <div class="cta-title">Ready to Celebrate? 🎊</div>
             <div class="cta-subtitle">Join your Toyota Forklift family for an unforgettable year-end celebration! Let's make memories together as we close this chapter and welcome new beginnings!</div>
+            <!-- "Count Me In" button removed as requested -->
         </div>
         
         <div class="footer">
@@ -788,30 +979,11 @@
         </div>
     </div>
 
-    <!-- Mini Player -->
-    <div class="mini-player" id="miniPlayer">
-        <div class="mini-player-header">
-            <span>Now Playing</span>
-            <div class="mini-player-controls">
-                <button class="mini-player-btn" id="miniPlayerClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-        </div>
-        <iframe 
-            class="mini-player-iframe" 
-            id="mini-youtube-player"
-            src="https://www.youtube.com/watch?v=V9PVRfjEBTI&list=RDoIv_Y2RPQ_A&index=4" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-    </div>
-
-    <!-- Mini Player Toggle -->
-    <div class="mini-player-toggle" id="miniPlayerToggle">
-        <i class="fas fa-music"></i>
-    </div>
+    <!-- Audio element for the Amapiano music -->
+    <audio id="amapiano-audio" loop>
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
         // Holiday messages
@@ -889,54 +1061,131 @@
             setTimeout(() => snowflake.remove(), 5000);
         }
 
-        if (window.innerWidth > 480) {
-            setInterval(createSnowflake, 200);
+        // Create ornaments
+        function createOrnament() {
+            const ornament = document.createElement('div');
+            ornament.className = 'ornament-float';
+            ornament.style.left = Math.random() * 100 + '%';
+            ornament.style.top = Math.random() * 100 + '%';
+            const colors = ['#ff0000', '#00ff00', '#ffd700', '#0000ff', '#ff00ff'];
+            ornament.style.background = colors[Math.floor(Math.random() * colors.length)];
+            ornament.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            document.getElementById('christmasBackground').appendChild(ornament);
+            
+            setTimeout(() => ornament.remove(), 8000);
         }
 
-        // YouTube Mini Player Functionality
-        const miniPlayer = document.getElementById('miniPlayer');
-        const miniPlayerToggle = document.getElementById('miniPlayerToggle');
-        const miniPlayerClose = document.getElementById('miniPlayerClose');
-        const mainPlayer = document.getElementById('main-youtube-player');
-        const miniYoutubePlayer = document.getElementById('mini-youtube-player');
+        if (window.innerWidth > 480) {
+            setInterval(createSnowflake, 200);
+            setInterval(createOrnament, 1000);
+        }
 
-        // Replace VIDEO_ID with actual YouTube video ID
-        const youtubeVideoId = "d9MyW4ELTBs"; // Example: Kabza De Small - Amapiano mix
-        
-        // Set the video source for both players
-        mainPlayer.src = `https://www.youtube.com/watch?v=V9PVRfjEBTI&list=RDoIv_Y2RPQ_A&index=4`;
-        miniYoutubePlayer.src = `https://www.youtube.com/embed/${youtubeVideoId}?enablejsapi=1&controls=0&rel=0&modestbranding=1&autoplay=0`;
+        // Countdown
+        function updateCountdown() {
+            const eventDate = new Date('2025-12-12T11:30:00');
+            const now = new Date();
+            const diff = eventDate - now;
 
-        // Show mini player when user scrolls past the YouTube section
-        window.addEventListener('scroll', function() {
-            const youtubeSection = document.querySelector('.youtube-section');
-            const youtubeSectionBottom = youtubeSection.offsetTop + youtubeSection.offsetHeight;
-            
-            if (window.scrollY > youtubeSectionBottom - 100) {
-                miniPlayer.classList.add('active');
-                miniPlayerToggle.classList.add('hidden');
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
             } else {
-                miniPlayer.classList.remove('active');
-                miniPlayerToggle.classList.remove('hidden');
+                document.querySelector('.countdown-title').textContent = '🎉 IT\'S PARTY TIME! 🎉';
             }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Amapiano Player
+        const amapianoTracks = [
+            { title: "Sengizwile", artist: "Kabza De Small & DJ Maphorisa" },
+            { title: "John Wick", artist: "De Mthuda, Sir Trill & Da Muziqal Chef" },
+            { title: "Bopha", artist: "Focalistic, M.J & Mellow" },
+            { title: "Adiwele", artist: "Young Stunna, Kabza De Small & DJ Maphorisa" },
+            { title: "uMlando", artist: "9umba, TOSS & Mdoovar" }
+        ];
+
+        let currentTrackIndex = 0;
+        let isAmapianoPlaying = false;
+        let progressInterval;
+        const audioPlayer = document.getElementById('amapiano-audio');
+        const volumeSlider = document.getElementById('volume-slider');
+
+        // Set initial volume
+        audioPlayer.volume = volumeSlider.value / 100;
+
+        // Update volume when slider changes
+        volumeSlider.addEventListener('input', function() {
+            audioPlayer.volume = this.value / 100;
         });
 
-        // Toggle mini player with button
-        miniPlayerToggle.addEventListener('click', function() {
-            miniPlayer.classList.toggle('active');
-            miniPlayerToggle.classList.toggle('hidden');
-        });
-
-        // Close mini player
-        miniPlayerClose.addEventListener('click', function() {
-            miniPlayer.classList.remove('active');
-            miniPlayerToggle.classList.remove('hidden');
+        function toggleAmapiano() {
+            const playIcon = document.getElementById('amapiano-play-icon');
             
-            // Pause the mini player when closed
-            if (miniYoutubePlayer.contentWindow) {
-                miniYoutubePlayer.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+            if (isAmapianoPlaying) {
+                // Pause the music
+                audioPlayer.pause();
+                playIcon.className = 'fas fa-play';
+                clearInterval(progressInterval);
+            } else {
+                // Play the music
+                audioPlayer.play().catch(e => {
+                    console.log("Audio play failed:", e);
+                    // If autoplay is blocked, show a message
+                    alert("Please click the play button to start the music. Some browsers require user interaction for audio playback.");
+                });
+                playIcon.className = 'fas fa-pause';
+                
+                // Update progress bar
+                progressInterval = setInterval(() => {
+                    const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                    document.getElementById('amapiano-progress').style.width = progress + '%';
+                    
+                    // If song ended, play next
+                    if (audioPlayer.currentTime >= audioPlayer.duration) {
+                        changeTrack(1);
+                    }
+                }, 100);
             }
-        });
+            
+            isAmapianoPlaying = !isAmapianoPlaying;
+        }
+
+        function changeTrack(direction) {
+            currentTrackIndex = (currentTrackIndex + direction + amapianoTracks.length) % amapianoTracks.length;
+            
+            // Update track info
+            document.getElementById('current-song').textContent = amapianoTracks[currentTrackIndex].title;
+            document.getElementById('current-artist').textContent = amapianoTracks[currentTrackIndex].artist;
+            
+            // Reset progress bar
+            document.getElementById('amapiano-progress').style.width = '0%';
+            
+            // If music was playing, continue playing
+            if (isAmapianoPlaying) {
+                clearInterval(progressInterval);
+                audioPlayer.currentTime = 0;
+                audioPlayer.play();
+                
+                progressInterval = setInterval(() => {
+                    const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                    document.getElementById('amapiano-progress').style.width = progress + '%';
+                    
+                    // If song ended, play next
+                    if (audioPlayer.currentTime >= audioPlayer.duration) {
+                        changeTrack(1);
+                    }
+                }, 100);
+            }
+        }
 
         // Dynamic gradient
         let hue = 0;
