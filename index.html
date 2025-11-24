@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Year-End Function 2025 | Toyota Forklift</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -789,6 +790,80 @@
             color: var(--accent-gold);
         }
 
+        /* Download Button Styles */
+        .download-section {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(235, 10, 30, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(235, 10, 30, 0.6);
+        }
+
+        .download-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .download-btn i {
+            font-size: 1.4rem;
+            transition: transform 0.3s ease;
+        }
+
+        .download-btn:hover i {
+            transform: translateY(2px);
+        }
+
+        .download-loading {
+            display: none;
+            margin-top: 15px;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .download-loading i {
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         /* YouTube Player Styles */
         #youtube-player-container {
             position: fixed;
@@ -913,6 +988,11 @@
                 text-align: center;
             }
 
+            .download-btn {
+                padding: 16px 30px;
+                font-size: 1.1rem;
+            }
+
             #youtube-player-container.minimized {
                 width: 160px;
                 height: 90px;
@@ -959,6 +1039,11 @@
                 font-size: 0.8rem;
             }
 
+            .download-btn {
+                padding: 14px 25px;
+                font-size: 1rem;
+            }
+
             #youtube-player-container.minimized {
                 width: 140px;
                 height: 80px;
@@ -992,6 +1077,11 @@
                 font-size: 0.6rem;
             }
             
+            .download-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
             #youtube-player-container.minimized {
                 width: 120px;
                 height: 70px;
@@ -1005,14 +1095,16 @@
             .logo-container:hover,
             .countdown-item:hover,
             .amapiano-section:hover,
-            .amapiano-btn:hover {
+            .amapiano-btn:hover,
+            .download-btn:hover {
                 transform: none;
             }
             
             .highlight-item:active,
             .date-box:active,
             .logo-container:active,
-            .countdown-item:active {
+            .countdown-item:active,
+            .download-btn:active {
                 transform: scale(0.98);
             }
         }
@@ -1022,7 +1114,8 @@
         .date-box,
         .countdown-item,
         .highlight-item,
-        .amapiano-btn {
+        .amapiano-btn,
+        .download-btn {
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -1036,7 +1129,7 @@
     </style>
 </head>
 <body>
-  
+   
     
     <div class="christmas-background" id="christmasBackground"></div>
     
@@ -1122,6 +1215,17 @@
             </div>
         </div>
 
+        <!-- Download Button Section 
+        <div class="download-section">
+            <button class="download-btn" id="downloadBtn">
+                <i class="fas fa-download"></i>
+                Download Invitation
+            </button>
+            <div class="download-loading" id="downloadLoading">
+                <i class="fas fa-spinner"></i>Creating your beautiful invitation...
+            </div>
+        </div>-->
+
        
         <div class="highlights-section">
             <div class="highlights-title">🎉 What to Expect 🎉</div>
@@ -1175,18 +1279,62 @@
         </div>
     </div>
 
-    <!-- Audio element for the Amapiano music -->
-    <audio id="amapiano-audio" loop>
-        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-        Your browser does not support the audio element.
-    </audio>
-
+ 
     <script>
+        // Download functionality
+        document.getElementById('downloadBtn').addEventListener('click', downloadInvitation);
+
+        async function downloadInvitation() {
+            const downloadBtn = document.getElementById('downloadBtn');
+            const downloadLoading = document.getElementById('downloadLoading');
+            
+            // Show loading state
+            downloadBtn.disabled = true;
+            downloadLoading.style.display = 'block';
+            
+            try {
+                // Hide YouTube player temporarily for cleaner screenshot
+                const youtubeContainer = document.getElementById('youtube-player-container');
+                const originalDisplay = youtubeContainer.style.display;
+                youtubeContainer.style.display = 'none';
+                
+                // Use html2canvas to capture the invitation
+                const canvas = await html2canvas(document.querySelector('.container'), {
+                    scale: 2, // Higher quality
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: null,
+                    onclone: function(clonedDoc) {
+                        // Ensure all elements are visible in the clone
+                        const clonedContainer = clonedDoc.querySelector('.container');
+                        clonedContainer.style.overflow = 'visible';
+                    }
+                });
+                
+                // Restore YouTube player
+                youtubeContainer.style.display = originalDisplay;
+                
+                // Convert canvas to image and download
+                const link = document.createElement('a');
+                link.download = 'Toyota-Forklift-Year-End-Function-2025.png';
+                link.href = canvas.toDataURL('image/png', 1.0);
+                link.click();
+                
+            } catch (error) {
+                console.error('Error generating image:', error);
+                alert('Sorry, there was an error generating the invitation image. Please try again.');
+            } finally {
+                // Restore button state
+                downloadBtn.disabled = false;
+                downloadLoading.style.display = 'none';
+            }
+        }
+
         // Mobile detection and optimizations
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         
-      
+       
 
         // Mobile-specific optimizations
         if (isMobile) {
