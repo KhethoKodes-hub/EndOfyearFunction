@@ -776,6 +776,72 @@
             color: var(--accent-gold);
         }
 
+        /* YouTube Player Styles */
+        #youtube-player-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+
+        #youtube-player-container.minimized {
+            top: auto;
+            left: auto;
+            right: 20px;
+            bottom: 20px;
+            width: 300px;
+            height: 180px;
+            background: transparent;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        #youtube-player {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        #minimize-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 10000;
+            transition: all 0.3s ease;
+        }
+
+        #minimize-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+
+        #youtube-player-container.minimized #minimize-btn {
+            top: 5px;
+            right: 5px;
+            width: 30px;
+            height: 30px;
+            font-size: 1rem;
+        }
+
         @media (max-width: 768px) {
             .invitation-card {
                 padding: 30px 20px;
@@ -807,6 +873,13 @@
                 padding: 20px;
                 border-radius: 20px;
             }
+
+            #youtube-player-container.minimized {
+                width: 250px;
+                height: 150px;
+                right: 10px;
+                bottom: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -816,10 +889,28 @@
                 padding: 25px 30px;
                 font-size: 0.95rem;
             }
+
+            #youtube-player-container.minimized {
+                width: 200px;
+                height: 120px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- YouTube Player Container -->
+    <div id="youtube-player-container">
+        <button id="minimize-btn">
+            <i class="fas fa-window-minimize"></i>
+        </button>
+        <iframe id="youtube-player" 
+        src="https://www.youtube.com/embed/3gMAnATV5sM?autoplay=1&controls=0&showinfo=0&rel=0&modestbranding=1&enablejsapi=1&loop=1&playlist=3gMAnATV5sM" 
+        frameborder="0" 
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+</iframe>
+    </div>
+    
     <div class="christmas-background" id="christmasBackground"></div>
     
     <div class="container">
@@ -860,13 +951,13 @@
             <div class="subtitle">"Cheers to the endings, for they lead to new beginnings"</div>
             
             <div class="date-box">
-                <div class="date">FRIDAY, 12 DECEMBER</div>
+                <div class="date">FRIDAY, 5 DECEMBER</div>
                 <div class="year">2025</div>
             </div>
             
             <div class="time-location">
                 <div><i class="fas fa-clock"></i>11:30 AM - 3:00 PM</div>
-                <div><i class="fas fa-map-marker-alt"></i>Valakazi Street</div>
+                <div><i class="fas fa-map-marker-alt"></i>Disoufeng</div>
             </div>
             
             <div class="countdown-section">
@@ -897,45 +988,14 @@
             <div class="weather-content">
                 <div class="weather-icon-large">☀️</div>
                 <div class="weather-info">
-                    <h3>Valakazi Street, Johannesburg</h3>
+                    <h3>Disoufeng</h3>
                     <div class="weather-temp">28°C</div>
                     <div class="weather-desc">Sunny & Perfect for Celebration!</div>
                 </div>
             </div>
         </div>
 
-        <!-- Amapiano Player Section -->
-        <div class="amapiano-section">
-            <div class="amapiano-title">🎵 Amapiano Vibes 🎵</div>
-            <div class="amapiano-player">
-                <div class="amapiano-info">
-                    <div class="amapiano-cover">🎶</div>
-                    <div class="amapiano-details">
-                        <div class="amapiano-song" id="current-song">Sengizwile</div>
-                        <div class="amapiano-artist" id="current-artist">Kabza De Small & DJ Maphorisa</div>
-                    </div>
-                </div>
-                <div class="amapiano-controls">
-                    <button class="amapiano-btn" onclick="changeTrack(-1)">
-                        <i class="fas fa-backward"></i>
-                    </button>
-                    <button class="amapiano-btn play-pause" onclick="toggleAmapiano()">
-                        <i class="fas fa-play" id="amapiano-play-icon"></i>
-                    </button>
-                    <button class="amapiano-btn" onclick="changeTrack(1)">
-                        <i class="fas fa-forward"></i>
-                    </button>
-                </div>
-                <div class="amapiano-progress">
-                    <div class="amapiano-progress-bar" id="amapiano-progress"></div>
-                </div>
-                <div class="volume-control">
-                    <i class="fas fa-volume-up"></i>
-                    <input type="range" min="0" max="100" value="70" class="volume-slider" id="volume-slider">
-                </div>
-            </div>
-        </div>
-        
+       
         <div class="highlights-section">
             <div class="highlights-title">🎉 What to Expect 🎉</div>
             <div class="highlights-grid">
@@ -981,8 +1041,8 @@
         
         <div class="footer">
             <p><strong>Toyota Forklift Year-End Function</strong></p>
-            <p>Friday, 12 December 2025 | 11:30 AM - 3:00 PM</p>
-            <p>Valakazi Street, Johannesburg</p>
+            <p>Friday, 5 December 2025 | 11:30 AM - 3:00 PM</p>
+            <p>Disoufeng</p>
             <p style="margin-top: 20px; font-style: italic;">🎄 Let's celebrate our achievements and welcome new opportunities! 🎄</p>
             <div class="powered-by">Powered by SCL Holdings</div>
         </div>
@@ -990,11 +1050,27 @@
 
     <!-- Audio element for the Amapiano music -->
     <audio id="amapiano-audio" loop>
-        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+        <source src="https://www.youtube.com/watch?v=XVh81QG7qj0&list=RD3pAoC-DWNfs&index=9" type="audio/wav">
         Your browser does not support the audio element.
     </audio>
 
     <script>
+        // YouTube Player Functionality
+        const youtubeContainer = document.getElementById('youtube-player-container');
+        const minimizeBtn = document.getElementById('minimize-btn');
+        
+        // Auto-minimize after 5 seconds
+        setTimeout(() => {
+            minimizePlayer();
+        }, 5000);
+        
+        // Manual minimize button
+        minimizeBtn.addEventListener('click', minimizePlayer);
+        
+        function minimizePlayer() {
+            youtubeContainer.classList.add('minimized');
+        }
+
         // Holiday messages
         const holidayMessages = [
             "Cheers to teamwork that made 2025 amazing! 🎉",
@@ -1091,7 +1167,7 @@
 
         // Countdown
         function updateCountdown() {
-            const eventDate = new Date('2025-12-12T11:30:00');
+            const eventDate = new Date('2025-12-05T11:30:00');
             const now = new Date();
             const diff = eventDate - now;
 
