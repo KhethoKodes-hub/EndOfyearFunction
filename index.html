@@ -1036,18 +1036,7 @@
     </style>
 </head>
 <body>
-    <!-- YouTube Player Container -->
-    <div id="youtube-player-container">
-        <button id="minimize-btn">
-            <i class="fas fa-window-minimize"></i>
-        </button>
-        <iframe id="youtube-player" 
-                src="https://www.youtube.com/embed/3gMAnATV5sM?autoplay=1&controls=0&showinfo=0&rel=0&modestbranding=1&enablejsapi=1&loop=1&playlist=3gMAnATV5sM" 
-                frameborder="0" 
-                allow="autoplay; encrypted-media" 
-                allowfullscreen>
-        </iframe>
-    </div>
+  
     
     <div class="christmas-background" id="christmasBackground"></div>
     
@@ -1197,21 +1186,7 @@
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         
-        // YouTube Player Functionality
-        const youtubeContainer = document.getElementById('youtube-player-container');
-        const minimizeBtn = document.getElementById('minimize-btn');
-        
-        // Auto-minimize after 5 seconds
-        setTimeout(() => {
-            minimizePlayer();
-        }, 5000);
-        
-        // Manual minimize button
-        minimizeBtn.addEventListener('click', minimizePlayer);
-        
-        function minimizePlayer() {
-            youtubeContainer.classList.add('minimized');
-        }
+      
 
         // Mobile-specific optimizations
         if (isMobile) {
